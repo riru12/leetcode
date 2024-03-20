@@ -30,16 +30,20 @@ class Solution:
     
     def spaceExpander(self, line: List[str], maxWidth:int) -> int:
         spaceRemaining = maxWidth - self.subArrayLength(line)
-        numSpaces = (len(line)-1)/2
+        numSpaces = int((len(line)-1)/2)
 
         if numSpaces > 0:
-            alloc = int(-(-spaceRemaining//numSpaces))
+            baseAlloc = int(spaceRemaining // numSpaces)
+            remainder = int(spaceRemaining % numSpaces)
+
+            spaceDistrib = [baseAlloc] * numSpaces
+            for i in range(remainder):
+                spaceDistrib[i] = spaceDistrib[i]+1
+
+            j = 0
             for i in range(1,len(line),2):
-                if spaceRemaining < alloc:
-                    line[i] = line[i]+" "*spaceRemaining
-                else:
-                    line[i] = line[i]+" "*alloc
-                    spaceRemaining -= alloc
+                line[i] = line[i]+" "*spaceDistrib[j]
+                j += 1
         else:
             line[0] = line[0] + " "*(maxWidth-len(line[0]))
 
@@ -51,29 +55,6 @@ class Solution:
 # Test Case
 runSolution = Solution()
 
-print(runSolution.fullJustify(["What","must","be","acknowledgment","shall","be"],16))
+print(runSolution.fullJustify(["This", "is", "an", "example", "of", "text", "justification."],16))
 
-'''
-["Give  me  my  Romeo; and,",
- "when  he  shall die, Take",
- "him  and  cut  him out in",
- "little stars, And he will",
- "make  the  face of heaven",
- "so   fine   That  all  the", 10
- "world  will  be  in  love",
- "with  night  And  pay  no",
- "worship   to   the garish",
- "sun.                     "]
-'''
-'''
-["Give  me  my  Romeo; and,",
- "when  he  shall die, Take",
- "him  and  cut  him out in",
- "little stars, And he will",
- "make  the  face of heaven",
- "so   fine  That  all  the", 9
- "world  will  be  in  love",
- "with  night  And  pay  no",
- "worship   to  the  garish",
- "sun.                     "]
-'''
+# Take note lines 36-41; efficient way to EVENLY distribute a number n into an array of size m (e.g. 7 into array of size 3 -> [3,2,2]); learned from GPT
