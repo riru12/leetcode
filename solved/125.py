@@ -8,14 +8,9 @@ class Solution:
         if len(processedS) == 0:
             return True
 
-        if len(processedS)%2 == 0: ## if even length (abba)
-            if (processedS[0:int(len(processedS)/2)] == processedS[int(len(processedS)/2)::][::-1]):
-                return True
-            
-        else:
-            if (processedS[0:int(len(processedS)//2)] == processedS[int(len(processedS)//2)+1::][::-1]):
-                return True
-            
+        if (processedS==processedS[::-1]):
+            return True
+
         return False
 
 
