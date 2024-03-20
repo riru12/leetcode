@@ -35,7 +35,6 @@ class Solution:
         if numSpaces > 0:
             alloc = int(-(-spaceRemaining//numSpaces))
             for i in range(1,len(line),2):
-                alloc = int(-(-spaceRemaining//numSpaces))
                 if spaceRemaining < alloc:
                     line[i] = line[i]+" "*spaceRemaining
                 else:
