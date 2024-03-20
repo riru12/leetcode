@@ -2,22 +2,38 @@ from typing import List
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        index=0
-        done=0
-        control = strs[0]
+        shortest_strLen = len(min(strs,key=len))
+        if len(strs)<0 or shortest_strLen==0:
+            return ""
 
-        while done!=1:
-            for i in range(1,len(strs)):
-                if strs[0][index] == strs[i][index]:
-                    continue
-                else:
-                    done=1
-                    break
-            index = index+1
+        for i in range(0,shortest_strLen):
+            letter = strs[0][i]
+            if all(word[i]==letter for word in strs):
+                continue
+            else: 
+                break
         
-        return control[0:index-1]
+        return strs[0][:i]
+
 
 # Test Case
 runSolution = Solution()
 
-print(runSolution.longestCommonPrefix(["flower","flow","flight"]))
+print(runSolution.longestCommonPrefix(["flight","flower"]))
+
+'''
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        shortest_strLen = len(min(strs,key=len))
+        if len(strs)<0 or shortest_strLen==0:
+            return ""
+
+        for i in range(0,shortest_strLen):
+            letter = strs[0][i]
+            if all(word[i]==letter for word in strs):
+                continue
+            else: 
+                break
+        
+        return strs[0][0:i]
+'''
