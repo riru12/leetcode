@@ -18,4 +18,4 @@ class Solution:
 # Test Case
 runSolution = Solution()
 
-print(runSolution.trap([4,2,0,3,2,5]))
+print(runSolution.trap([0,1,0,1]))
