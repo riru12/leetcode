@@ -19,5 +19,3 @@ class Solution:
 runSolution = Solution()
 
 print(runSolution.trap([4,2,0,3,2,5]))
-
-                
