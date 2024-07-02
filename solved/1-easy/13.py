@@ -17,10 +17,11 @@ class Solution:
                 result -= romanMapping[s[i]]
             else:
                 result += romanMapping[s[i]]
+            print(result)
 
         return result
 
 # Test Case
 runSolution = Solution()
 
-print(runSolution.romanToInt("CDLIII"))
+print(runSolution.romanToInt("IX"))
